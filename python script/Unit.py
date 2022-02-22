@@ -12,9 +12,9 @@ from arguments import *
 """
  你的 APPID AK SK 
 """
-APP_ID = '20417580'
-API_KEY = 'lw5kukrdvC0AHYhjg8GV3w0H'
-SECRET_KEY = 'c6HzSikSi4eZAVVdRkGvwj4Dia4bz2cx'
+APP_ID = 
+API_KEY = 
+SECRET_KEY = 
 client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
 
 def ckint():
@@ -61,6 +61,38 @@ def ftk(path):
     changeK(10)
     daguanqia(inpath,lwait)#这里K应该是10,地址应该是9.png
 
+
+def rename(place):#需要存储的文件夹
+    screanshoot()
+    picniame = '{}.png'.format(time.strftime('%Y-%m-%d-%H-%M-%S'))
+    hpath = './print/'+ place + '/'
+    if not os.path.exists(hpath):
+            os.makedirs(hpath)
+    print("截图已送至%s" % hpath)
+    os.rename(scpath ,hpath+picniame )
+    #准确的说这个rename是将前一个字段的文件移动到后一个文段的位置并重命名
+
+def kill():#消灭模拟器进程
+
+    os.system('taskkill /f /im dnplayer.exe')
+
+def re():#重启ADB
+    os.system("adb kill-server")
+
+    sleep(swait)
+
+    os.system("adb start-server")
+
+    sleep(swait)
+
+def Android():#开启模拟器
+    openapp = r'D:/leidian/LDPlayer4\dnplayer.exe'
+    #设定函数所在路径
+    os.startfile(openapp)
+    sleep(tlwait)
+    #调用OS中的startfile函数执行括号内的命令
+
+    
 def arknight(path):
     global k
     free = (370,115)
@@ -104,37 +136,7 @@ def arknight(path):
     rename("arknight")
     os.system("adb shell am force-stop com.hypergryph.arknights/com.u8.sdk.U8UnityContext")
     print("脚本结束")
-
-def rename(place):#需要存储的文件夹
-    screanshoot()
-    picniame = '{}.png'.format(time.strftime('%Y-%m-%d-%H-%M-%S'))
-    hpath = './print/'+ place + '/'
-    if not os.path.exists(hpath):
-            os.makedirs(hpath)
-    print("截图已送至%s" % hpath)
-    os.rename(scpath ,hpath+picniame )
-    #准确的说这个rename是将前一个字段的文件移动到后一个文段的位置并重命名
-
-def kill():#消灭模拟器进程
-
-    os.system('taskkill /f /im dnplayer.exe')
-
-def re():#重启ADB
-    os.system("adb kill-server")
-
-    sleep(swait)
-
-    os.system("adb start-server")
-
-    sleep(swait)
-
-def Android():#开启模拟器
-    openapp = r'D:/leidian/LDPlayer4\dnplayer.exe'
-    #设定函数所在路径
-    os.startfile(openapp)
-    sleep(tlwait)
-    #调用OS中的startfile函数执行括号内的命令
-
+    
 def FGO():
     freedom = (627,421)
     #os.system("adb shell input tap 545 109")不需要 这种方式打开了
@@ -164,7 +166,6 @@ def FGO():
     screanshoot()
     rename("FGO")
     os.system("adb shell am force-stop com.bilibili.fatego")
-
     #关闭FGO
 
 def cleaner():
@@ -816,8 +817,6 @@ def huanhao():
         print("出错了找不着换号按钮")
         rename('error')
         sys.exit()
-
-
 
 if __name__=='__main__':   
     os.chdir(now)
